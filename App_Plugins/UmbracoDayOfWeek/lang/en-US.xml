@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en_us" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <creator>
+	<name>Umbraco</name>
+	<link>https://umbraco.com</link>
+  </creator>
+  <area alias="UmbracoDayOfWeek">
+		<key alias="Edit">Edit</key>
+	  <key alias="d0">Sunday</key>
+	  <key alias="d1">Monday</key>
+	  <key alias="d2">Tuesday</key>
+	  <key alias="d3">Wednesday</key>
+	  <key alias="d4">Thursday</key>
+	  <key alias="d5">Friday</key>
+	  <key alias="d6">Saturday</key>
+  </area>
+</language>

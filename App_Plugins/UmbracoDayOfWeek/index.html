@@ -1,0 +1,7 @@
+<div ng-controller="UmbracoDayOfWeekController">
+	<label ng-if="!inEditState">{{displayValue}}</label>
+	<div ng-if="inEditState">
+		<select ng-model="model.value" ng-options="item.Id as item.Name for item in model.list"></select>
+	</div>
+	<span ng-if="!inEditState" class="data-api-picker-edit-label" ng-click="onEdit()">{{translations.UmbracoDayOfWeek_Edit}}</span>
+</div>

@@ -1,0 +1,34 @@
+{
+    "id": "UmbracoDayOfWeek",
+    "name": "UmbracoDayOfWeek",
+	"version": "13.0.0",
+	"allowPackageTelemetry": true,
+	propertyEditors: [
+		{
+			alias: "UmbracoDayOfWeek",
+			name: "UmbracoDayOfWeek",
+			icon: "icon-code",
+			group: "Rich Content",
+			editor: {
+				view: "~/App_Plugins/UmbracoDayOfWeek/index.html",
+				valueType: "string"
+			},
+			prevalues: {
+				fields: [
+					{
+						label: "Default Start Day of Week",
+						description: "This is the default start day of the Week",
+						key: "defaultStartDayOfWeek",
+						"view": "~/App_Plugins/UmbracoDayOfWeek/index.html"
+					}
+				]
+			}
+		}
+	],
+	javascript: [
+		'~/App_Plugins/UmbracoDayOfWeek/index.js'
+	],
+	css: [
+		'~/App_Plugins/UmbracoDayOfWeek/style.css'
+	]
+}
