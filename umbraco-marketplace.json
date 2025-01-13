@@ -20,10 +20,22 @@
     "IssueTrackerUrl": "https://github.com/Frost117/UmbracoDayOfWeek/issues",
     "PackageType": "Package",
     "Screenshots": [
-      {
-        "ImageUrl": "",
-        "Caption": ""
-      }
+		{
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/images/backoffice-content.png",
+			"Caption": "Showcasing what content looks like when using the property editor"
+		},
+        {
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/images/backoffice-content-editing.png",
+			"Caption": "Showcasing what content looks like when you edit the content"
+		},
+        {
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/images/backoffice-settings.png",
+			"Caption": "Showcasing what settings looks like when configuring the property editor"
+		},
+        {
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/images/backoffice-content-editing.png",
+			"Caption": "Showcasing what options you have when configuring the property editor"
+		}
     ],
     "Tags": [],
     "Title": "Umbraco Day Of Week Property Editor",
