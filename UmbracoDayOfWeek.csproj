@@ -1,11 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <StaticWebAssetBasePath>/App_Plugins/UmbracoDayOfWeek</StaticWebAssetBasePath>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <Version>15.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,24 +23,39 @@
     <RepositoryType>git</RepositoryType>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <UmbracoCmsPackageVersion>[15.0.0, 15.999.999)</UmbracoCmsPackageVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.5.2" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.5.2" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="$(UmbracoCmsPackageVersion)" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="$(UmbracoCmsPackageVersion)" />
+    <PackageReference Include="Umbraco.Cms.Api.Common" Version="$(UmbracoCmsPackageVersion)" />
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="$(UmbracoCmsPackageVersion)" />
     <None Include="README.md" Pack="true" PackagePath=""/>
     <None Include="LICENSE" Pack="true" PackagePath=""/>
-
   </ItemGroup>
 
-  <ItemGroup>
+    <ItemGroup>
     <None Update="logo.png" Pack="true" PackagePath="" />
   </ItemGroup>
   
+
   <ItemGroup>
     <Content Include="App_Plugins\UmbracoDayOfWeek\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
-    <None Include="buildTransitive\**">
-      <Pack>true</Pack>
-      <PackagePath>buildTransitive</PackagePath>
-    </None>
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
   </ItemGroup>
+
+
+  <!-- Build client assets using NPM -->
+  <Target Name="NpmBuild" BeforeTargets="BeforeBuild">
+    <Exec Command="npm install" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
+    <Exec Command="npm run build" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
+</Target>
+
+<Target Name="NpmRemove" AfterTargets="Build">
+    <RemoveDir Directories="App_Plugins\UmbracoDayOfWeek\node_modules" />
+</Target>
+  
 </Project>

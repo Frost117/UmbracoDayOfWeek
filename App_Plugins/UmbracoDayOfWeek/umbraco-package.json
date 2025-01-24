@@ -1,0 +1,55 @@
+{
+    "$schema": "../../umbraco-package-schema.json",
+    "name": "Day Of The Week",
+    "version": "15.0.0",
+    "extensions": [
+        {
+            "type": "propertyEditorUi",
+            "alias": "UmbracoDayOfWeek",
+            "name":"My Day of The Week Property Editor",
+            "element": "/App_Plugins/UmbracoDayOfWeek/Client/dist/client.js",
+            "elementName": "my-dayoftheweek",
+            "meta": {
+                "label": "Day of the Week",
+                "icon": "icon-list",
+                "group": "common",
+                "propertyEditorSchemaAlias": "Umbraco.Plain.Integer",
+                "defaultData":[
+                    {
+                        "alias": "startOfWeek",
+                        "value": 1
+                    }
+                ],
+                "settings":{
+                    "properties":[
+                        {
+                            "alias": "startOfWeek",
+                            "label": "Start the of Week",
+                            "description": "Select which day of the week to start on",
+                            "propertyEditorUiAlias": "UmbracoDayOfWeek"
+                           
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "localization",
+            "alias": "DayOfTheWeek.Localize.EnUs",
+            "name": "English (United States)",
+            "meta": {
+                "culture": "en-US"
+            },
+            "js": "/App_Plugins/UmbracoDayOfWeek/Localization/en-us.js"
+        },
+        {
+            "type": "localization",
+            "alias": "DayOfTheWeek.Localize.DaDk",
+            "name": "Danish (Denmark)",
+            "meta": {
+                "culture": "da-DK"
+            },
+            "js": "/App_Plugins/UmbracoDayOfWeek/Localization/da-dk.js"
+        }
+    ]
+}

@@ -42,7 +42,7 @@
     "VersionDependencyMode": "Default",
     "VersionSpecificPackageIds": [
       {
-        "UmbracoMajorVersion": 13,
+        "UmbracoMajorVersion": 15,
         "PackageId": "UmbracoDayOfWeek"
       }
     ]
