@@ -6,7 +6,7 @@
     <ContentTargetFolders>.</ContentTargetFolders>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <StaticWebAssetBasePath>/App_Plugins/UmbracoDayOfWeek</StaticWebAssetBasePath>
+    <StaticWebAssetBasePath>App_Plugins/UmbracoDayOfWeek</StaticWebAssetBasePath>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
     <Version>15.0.2</Version>
   </PropertyGroup>
