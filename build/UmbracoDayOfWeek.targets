@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UmbracoDayOfWeekContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\LanguagePicker\**\*.*</UmbracoDayOfWeekContentFilesPath>
+    </PropertyGroup>
+
+    <Target Name="CopyUmbracoDayOfWeekAssets" BeforeTargets="Build">
+        <ItemGroup>
+            <UUmbracoDayOfWeekContentFiles Include="$(UUmbracoDayOfWeekContentFilesPath)" />
+        </ItemGroup>
+        <Message Text="Copying UmbracoDayOfWeek files: $(UmbracoDayOfWeekContentFilesPath) - #@(UmbracoDayOfWeekContentFiles->Count()) files" Importance="high" />
+        <Copy SourceFiles="@(UmbracoDayOfWeekContentFiles)" DestinationFiles="@(UmbracoDayOfWeekrContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\UmbracoDayOfWeek\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    </Target>
+    
+    <Target Name="ClearUmbracoDayOfWeekAssets" BeforeTargets="Clean">
+        <ItemGroup>
+            <UmbracoUmbracoDayOfWeekDir Include="$(MSBuildProjectDirectory)\App_Plugins\UmbracoDayOfWeek\" />
+        </ItemGroup>
+        <Message Text="Clear old UmbracoDayOfWeek data" Importance="high" />
+        <RemoveDir Directories="@(UmbracoDayOfWeekDir)" />
+    </Target>
+</Project>

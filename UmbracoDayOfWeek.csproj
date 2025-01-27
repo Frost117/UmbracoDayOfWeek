@@ -4,11 +4,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <StaticWebAssetBasePath>App_Plugins/UmbracoDayOfWeek</StaticWebAssetBasePath>
+    <Version>15.0.4</Version>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    <Version>15.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -22,6 +19,8 @@
     <RepositoryUrl>https://github.com/Frost117/UmbracoDayOfWeek</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -42,20 +41,27 @@
   </ItemGroup>
   
 
-  <ItemGroup>
-    <Content Include="App_Plugins\UmbracoDayOfWeek\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
-    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+   <ItemGroup>
+
+    <Content Include="App_Plugins\UmbracoDayOfWeek\**">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+
+    <None Include="build\**">
+      <Pack>true</Pack>
+      <PackagePath>buildTransitive</PackagePath>
+    </None>
+    
   </ItemGroup>
 
+   <Target Name="NpmBuild" BeforeTargets="BeforeBuild">
+	  <Exec Command="npm install" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
+	  <Exec Command="npm run build" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
+  </Target>
 
-  <!-- Build client assets using NPM -->
-  <Target Name="NpmBuild" BeforeTargets="BeforeBuild">
-    <Exec Command="npm install" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
-    <Exec Command="npm run build" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
-</Target>
-
-<Target Name="NpmRemove" AfterTargets="Build">
-    <RemoveDir Directories="App_Plugins\UmbracoDayOfWeek\node_modules" />
-</Target>
+	<Target Name="NpmRemove" AfterTargets="AfterPack">
+		<RemoveDir Directories="App_Plugins\UmbracoDayOfWeek\node_modules" />
+	</Target>
   
 </Project>
