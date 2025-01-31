@@ -4,8 +4,14 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
-    <Version>15.0.5</Version>
-    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <Version>15.0.7</Version>
+    <EnablePackageValidation>false</EnablePackageValidation>
+    <StaticWebAssetBasePath>App_Plugins</StaticWebAssetBasePath>
+    <RootNamespace>UmbracoDayOfWeek</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionSuffix>beta1</VersionSuffix>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -39,21 +45,14 @@
     <ItemGroup>
     <None Update="logo.png" Pack="true" PackagePath="" />
   </ItemGroup>
-  
-    
-  <ItemGroup>
-    <Content Include="App_Plugins\UmbracoDayOfWeek\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
-    <None Include="build\**" Pack="true" PackagePath="buildTransitive" />
-  </ItemGroup>
-
 
    <Target Name="NpmBuild" BeforeTargets="BeforeBuild">
-	  <Exec Command="npm install" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
-	  <Exec Command="npm run build" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
+	  <Exec Command="npm install" WorkingDirectory="wwwroot\UmbracoDayOfWeek" />
+	  <Exec Command="npm run build" WorkingDirectory="wwwroot\UmbracoDayOfWeek" />
   </Target>
 
 	<Target Name="NpmRemove" AfterTargets="AfterBuild">
-		<RemoveDir Directories="App_Plugins\UmbracoDayOfWeek\node_modules" />
+		<RemoveDir Directories="wwwroot\UmbracoDayOfWeek\node_modules" />
 	</Target>
   
 </Project>
