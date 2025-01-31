@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
-    <Version>15.0.4</Version>
+    <Version>15.0.5</Version>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
@@ -40,27 +40,19 @@
     <None Update="logo.png" Pack="true" PackagePath="" />
   </ItemGroup>
   
-
-   <ItemGroup>
-
-    <Content Include="App_Plugins\UmbracoDayOfWeek\**">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </Content>
-
-    <None Include="build\**">
-      <Pack>true</Pack>
-      <PackagePath>buildTransitive</PackagePath>
-    </None>
     
+  <ItemGroup>
+    <Content Include="App_Plugins\UmbracoDayOfWeek\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="build\**" Pack="true" PackagePath="buildTransitive" />
   </ItemGroup>
+
 
    <Target Name="NpmBuild" BeforeTargets="BeforeBuild">
 	  <Exec Command="npm install" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
 	  <Exec Command="npm run build" WorkingDirectory="App_Plugins\UmbracoDayOfWeek" />
   </Target>
 
-	<Target Name="NpmRemove" AfterTargets="AfterPack">
+	<Target Name="NpmRemove" AfterTargets="AfterBuild">
 		<RemoveDir Directories="App_Plugins\UmbracoDayOfWeek\node_modules" />
 	</Target>
   

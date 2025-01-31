@@ -1,14 +1,13 @@
 // @ts-ignore
 import { defineConfig } from "vite";
-import { outputPath } from "./config.outputPath.js";
 
 export default defineConfig({
     build: {
         lib: {
-            entry: "Client/dayOfTheWeek.ts", // your web component source file
+            entry: "src/dayOfTheWeek.ts", // your web component source file
             formats: ["es"],
         },
-        outDir: outputPath, // all compiled files will be placed here
+        outDir: "dist", // all compiled files will be placed here
         emptyOutDir: true,
         sourcemap: true,
         rollupOptions: {

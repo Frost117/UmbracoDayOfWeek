@@ -7,7 +7,7 @@
             "type": "propertyEditorUi",
             "alias": "UmbracoDayOfWeek",
             "name":"My Day of The Week Property Editor",
-            "element": "/App_Plugins/UmbracoDayOfWeek/Client/dist/client.js",
+            "element": "/App_Plugins/UmbracoDayOfWeek/dist/client.js",
             "elementName": "my-dayoftheweek",
             "meta": {
                 "label": "Day of the Week",
