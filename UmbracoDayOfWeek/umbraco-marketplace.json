@@ -21,11 +21,11 @@
     "PackageType": "Package",
     "Screenshots": [
 		{
-			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/v15/UmbracoDayOfWeek/images/backoffice-content-editing-v15.png",
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-content-editing-v15.png",
 			"Caption": "Showcasing what content looks like when using the property editor"
 		},
         {
-			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/v15/UmbracoDayOfWeek/images/backoffice-settings-v15.png",
+			"ImageUrl": "https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-settings-v15.png",
 			"Caption": "Showcasing what settings looks like when configuring the property editor"
 		}    ],
     "Tags": [],
