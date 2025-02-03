@@ -4,6 +4,7 @@ namespace UmbracoDayOfWeek
     {
         public DropdownItem()
         {
+            DefaultName = string.Empty;
         }
 
         public int Id { get; set; }

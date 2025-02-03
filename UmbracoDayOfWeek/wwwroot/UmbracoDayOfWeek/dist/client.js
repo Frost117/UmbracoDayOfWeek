@@ -1,104 +1,95 @@
-import { LitElement as T, html as O, property as l, state as y, customElement as W } from "@umbraco-cms/backoffice/external/lit";
-import { UmbElementMixin as g } from "@umbraco-cms/backoffice/element-api";
-import { UMB_AUTH_CONTEXT as w } from "@umbraco-cms/backoffice/auth";
+import { LitElement as O, html as W, property as l, state as _, customElement as g } from "@umbraco-cms/backoffice/external/lit";
+import { UmbElementMixin as T } from "@umbraco-cms/backoffice/element-api";
+import { UMB_AUTH_CONTEXT as y } from "@umbraco-cms/backoffice/auth";
 import { UmbPropertyValueChangeEvent as C } from "@umbraco-cms/backoffice/property-editor";
-var D = Object.defineProperty, E = Object.getOwnPropertyDescriptor, v = (e) => {
-  throw TypeError(e);
-}, o = (e, t, a, r) => {
-  for (var s = r > 1 ? void 0 : r ? E(t, a) : t, p = e.length - 1, u; p >= 0; p--)
-    (u = e[p]) && (s = (r ? u(t, a, s) : u(s)) || s);
-  return r && s && D(t, a, s), s;
-}, f = (e, t, a) => t.has(e) || v("Cannot " + a), c = (e, t, a) => (f(e, t, "read from private field"), a ? a.call(e) : t.get(e)), d = (e, t, a) => t.has(e) ? v("Cannot add the same private member more than once") : t instanceof WeakSet ? t.add(e) : t.set(e, a), A = (e, t, a, r) => (f(e, t, "write to private field"), t.set(e, a), a), _ = (e, t, a) => (f(e, t, "access private method"), a), i, h, m, k;
-let n = class extends g(T) {
+var D = Object.defineProperty, w = Object.getOwnPropertyDescriptor, m = (t) => {
+  throw TypeError(t);
+}, o = (t, e, a, r) => {
+  for (var s = r > 1 ? void 0 : r ? w(e, a) : e, p = t.length - 1, f; p >= 0; p--)
+    (f = t[p]) && (s = (r ? f(e, a, s) : f(s)) || s);
+  return r && s && D(e, a, s), s;
+}, c = (t, e, a) => e.has(t) || m("Cannot " + a), S = (t, e, a) => (c(t, e, "read from private field"), a ? a.call(t) : e.get(t)), v = (t, e, a) => e.has(t) ? m("Cannot add the same private member more than once") : e instanceof WeakSet ? e.add(t) : e.set(t, a), E = (t, e, a, r) => (c(t, e, "write to private field"), e.set(t, a), a), u = (t, e, a) => (c(t, e, "access private method"), a), h, n, d, k;
+let i = class extends T(O) {
   constructor() {
-    super(), d(this, h), d(this, i, ""), this.defaultStartOfTheWeek = 1, this.readonly = !1, this._options = [], this.consumeContext(w, (e) => {
-      this._authorizationContext = e, this.myAuthToken = e.getLatestToken();
+    super(), v(this, n), v(this, h, -1), this.displayList = [], this.defaultStartOfTheWeek = 1, this._options = [], this.consumeContext(y, (t) => {
+      this._authorizationContext = t, this.myAuthToken = t.getLatestToken();
     });
   }
   get value() {
-    return c(this, i);
+    return S(this, h);
   }
-  set value(e) {
-    A(this, i, e || "");
+  set value(t) {
+    E(this, h, t);
   }
-  set config(e) {
-    let t = e.getValueByAlias("startOfWeek");
-    this._startOfWeek = t || this.defaultStartOfTheWeek;
-    const a = t || this.defaultStartOfTheWeek;
-    Array.isArray(a) && a.length > 0 && (this._options = typeof a[0] == "string" ? a.map((r) => ({ name: r, value: r, selected: c(this, i).includes(r) })) : a.map((r) => ({
-      name: r.name,
-      value: r.value,
-      selected: c(this, i).includes(r.value)
-    })));
+  set config(t) {
+    let e = t.getValueByAlias("startOfWeek");
+    this._startOfWeek = e || this.defaultStartOfTheWeek;
   }
   render() {
-    return O`
+    return W`
       <umb-input-dropdown-list
-          .options=${this._options.map((e) => ({
-      name: e.name,
-      value: e.value,
-      selected: e.selected
-    }))}
-          @change=${_(this, h, m)}
-          ?readonly=${this.readonly}>
+          .options=${this.displayList}
+          @change=${u(this, n, k)}>
       </umb-input-dropdown-list>
     `;
   }
-  async connectedCallback(e) {
-    super.connectedCallback(e), await this.getDayOfTheWeek();
-  }
-  async getDayOfTheWeek() {
-    try {
-      const t = {
-        Authorization: `Bearer ${await this.myAuthToken}`
-      }, a = await fetch(`/umbraco/management/api/v1/get-dropdown-value-list?startDayOfTheWeek=${this._startOfWeek}`, { headers: t }).then((r) => r.json());
-      this._options = a.map((r) => {
-        let s = this.localize.term(`DayOfTheWeek_d${r.id}`);
-        return {
-          name: s !== `DayOfTheWeek_d${r.id}` ? s : r.defaultName,
-          value: r.id,
-          selected: this.value ? this.value == r.id : !1
-        };
-      }), console.log(this._options);
-    } catch (e) {
-      console.error(e);
-    }
+  async connectedCallback() {
+    super.connectedCallback();
+    const t = this._startOfWeek;
+    this.defaultStartDayOfWeekValue = t >= 0 && t < 7 ? t : this.defaultStartDayOfWeekValue, this.consumeContext(y, (e) => {
+      e.getLatestToken().then((a) => {
+        try {
+          const r = {
+            Authorization: `Bearer ${a}`
+          };
+          fetch(`/umbraco/management/api/v1/get-dropdown-value-list?startDayOfTheWeek=${this.defaultStartDayOfWeekValue}`, { headers: r }).then((s) => s.json()).then((s) => {
+            this.list = s, u(this, n, d).call(this);
+          });
+        } catch (r) {
+          console.error(r);
+        }
+      });
+    });
   }
 };
-i = /* @__PURE__ */ new WeakMap();
-h = /* @__PURE__ */ new WeakSet();
-m = function(e) {
-  const t = e.target.value;
-  _(this, h, k).call(this, t);
+h = /* @__PURE__ */ new WeakMap();
+n = /* @__PURE__ */ new WeakSet();
+d = function() {
+  this.displayList = this.list.map((t) => ({
+    // @ts-ignore
+    name: this.localize.term(`DayOfTheWeek_d${t.id}`) || t.DefaultName,
+    value: t.id,
+    selected: this.value || this.value === 0 ? this.value == t.id : !1
+  })), this.requestUpdate(), console.log(this.displayList);
 };
-k = function(e) {
-  e && (this.value = e, this.dispatchEvent(new C()));
+k = function(t) {
+  this.value = +t.target.value, this.dispatchEvent(new C()), u(this, n, d).call(this);
 };
-o([
-  l({ type: Number })
-], n.prototype, "defaultStartOfTheWeek", 2);
-o([
-  l({ type: String })
-], n.prototype, "value", 1);
 o([
   l()
-], n.prototype, "myAuthToken", 2);
+], i.prototype, "displayList", 2);
 o([
-  l({ type: Boolean, reflect: !0 })
-], n.prototype, "readonly", 2);
+  l({ type: Number })
+], i.prototype, "defaultStartOfTheWeek", 2);
+o([
+  l({ type: Number })
+], i.prototype, "value", 1);
+o([
+  l()
+], i.prototype, "myAuthToken", 2);
 o([
   l({ attribute: !1 })
-], n.prototype, "config", 1);
+], i.prototype, "config", 1);
 o([
-  y()
-], n.prototype, "_startOfWeek", 2);
+  _()
+], i.prototype, "_startOfWeek", 2);
 o([
-  y()
-], n.prototype, "_options", 2);
-n = o([
-  W("my-dayoftheweek")
-], n);
+  _()
+], i.prototype, "_options", 2);
+i = o([
+  g("my-dayoftheweek")
+], i);
 export {
-  n as MyDayOfTheWeekElement
+  i as MyDayOfTheWeekElement
 };
 //# sourceMappingURL=client.js.map

@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
-    <Version>15.0.7</Version>
+    <Version>15.0.8</Version>
     <EnablePackageValidation>false</EnablePackageValidation>
     <StaticWebAssetBasePath>App_Plugins</StaticWebAssetBasePath>
     <RootNamespace>UmbracoDayOfWeek</RootNamespace>
