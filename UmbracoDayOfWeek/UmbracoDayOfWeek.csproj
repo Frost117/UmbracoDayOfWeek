@@ -4,14 +4,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ContentTargetFolders>.</ContentTargetFolders>
-    <Version>15.0.8</Version>
+    <Version>15.0.10</Version>
     <EnablePackageValidation>false</EnablePackageValidation>
     <StaticWebAssetBasePath>App_Plugins</StaticWebAssetBasePath>
     <RootNamespace>UmbracoDayOfWeek</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <VersionSuffix>beta1</VersionSuffix>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -22,11 +18,11 @@
     <PackageTags>umbraco plugin package umbraco-marketplace</PackageTags>
     <Authors>MrFreeze</Authors>
     <PackageProjectUrl>https://github.com/Frost117/UmbracoDayOfWeek</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Frost117/UmbracoDayOfWeek</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Frost117/UmbracoDayOfWeek/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>logo.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>./README.md</PackageReadmeFile>
+    <PackageLicenseFile>./LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -38,8 +34,8 @@
     <PackageReference Include="Umbraco.Cms.Web.Common" Version="$(UmbracoCmsPackageVersion)" />
     <PackageReference Include="Umbraco.Cms.Api.Common" Version="$(UmbracoCmsPackageVersion)" />
     <PackageReference Include="Umbraco.Cms.Api.Management" Version="$(UmbracoCmsPackageVersion)" />
-    <None Include="README.md" Pack="true" PackagePath=""/>
-    <None Include="LICENSE" Pack="true" PackagePath=""/>
+    <None Include="../README.md" Pack="true" PackagePath=""/>
+    <None Include="../LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
     <ItemGroup>
