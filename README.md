@@ -17,11 +17,11 @@ By default the dropdown's first day will be Monday.
 
 When saving the day a value converter will take care of the database entry, as it is stored as a numeric value.
 
-![Model.value for the week days exempel](/https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-content-editing-model-v15.png)
+![Model.value for the week days exempel](https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-content-editing-model-v15.png)
 
 ### Configuration
 You can change the start day in the dropdown via the settings in the datatype:
-![Configuration to change start day of the week](/https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-settings-v15.png)
+![Configuration to change start day of the week](https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/backoffice-settings-v15.png)
 
 ![Changing which day the week starts of with to Friday](https://raw.githubusercontent.com/Frost117/UmbracoDayOfWeek/refs/heads/main/UmbracoDayOfWeek/images/friday-start.png)
 
