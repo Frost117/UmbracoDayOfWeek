@@ -33,7 +33,7 @@ jobs:
         run: dotnet build $PROJECT_FOLDER/$PROJECT
       
       - name: Create the package
-      - run: dotnet pack --configuration Release $PROJECT_FOLDER/$PROJECT
+        run: dotnet pack --configuration Release $PROJECT_FOLDER/$PROJECT
 
       - name: Publish the package to Rository
-      - run: dotnet nuget push $PROJECT_FOLDER/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s $NUGET_REPO_URL
+        run: dotnet nuget push $PROJECT_FOLDER/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s $NUGET_REPO_URL
