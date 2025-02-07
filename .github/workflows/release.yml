@@ -6,7 +6,7 @@ name: Release to Nuget
 on: [push]
 
 env:
-  PROJECT_FOLDER: UmbracoDayOfWeek
+  PROJECT_FOLDER: src/UmbracoDayOfWeek
   PROJECT: UmbracoDayOfWeek.csproj
   NUGET_REPO_URL: https://nuget.pkg.github.com/Frost117/index.json
 
