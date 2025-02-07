@@ -13,9 +13,9 @@ import type { UUISelectEvent } from '@umbraco-cms/backoffice/external/uui';
 
 @customElement('my-dayoftheweek')
 export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implements UmbPropertyEditorUiElement {
-  #selection: number = -1;
+  #selection = -1;
   
-  public get value(): number{
+  public get value(){
     return this.#selection;
   };
   
@@ -23,17 +23,17 @@ export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implement
   public displayList: Array<any> = [];
   
   @property()
-  public defaultStartOfTheWeek: number = 1; // Monday by default
+  public defaultStartOfTheWeek = 1; // Monday by default
   
   @property()
-  public set value(value: number) {
+  public set value(value) {
     this.#selection = value;
   }
   
   @property()
   public myAuthToken: Promise<string> | undefined;
   
-  @property({ attribute: false})
+  @property()
   public set config(config: UmbPropertyEditorConfigCollection) {
     let defaultStartDayOfWeekConfigValue = config.getValueByAlias("startOfWeek");
     this._startOfWeek = defaultStartDayOfWeekConfigValue ? defaultStartDayOfWeekConfigValue : this.defaultStartOfTheWeek;
@@ -43,7 +43,7 @@ export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implement
   
   @state()
   // @ts-ignore
-  private _startOfWeek: number;
+  private _startOfWeek;
   
   @state()
   // @ts-ignore
