@@ -11,9 +11,6 @@ export default defineConfig({
         sourcemap: true,
         rollupOptions: {
             external: [/^@umbraco/], // ignore the Umbraco Backoffice package in the build
-            output: {
-                dir: undefined
-            }
         }
     }
 });
