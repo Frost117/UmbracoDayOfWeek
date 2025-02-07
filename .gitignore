@@ -484,4 +484,4 @@ $RECYCLE.BIN/
 *.swp
 
 # Ignore the front-end files
-UmbracoDayOfWeek/wwwroot/UmbracoDayOfWeek/dist/
+/wwwroot/UmbracoDayOfWeek/dist/
