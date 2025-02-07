@@ -46,9 +46,5 @@
 	  <Exec Command="npm install" WorkingDirectory="wwwroot\UmbracoDayOfWeek" />
 	  <Exec Command="npm run build" WorkingDirectory="wwwroot\UmbracoDayOfWeek" />
   </Target>
-
-	<Target Name="NpmRemove" AfterTargets="AfterBuild">
-		<RemoveDir Directories="wwwroot\UmbracoDayOfWeek\node_modules" />
-	</Target>
   
 </Project>

@@ -1,10 +1,9 @@
-// @ts-ignore
 import { defineConfig } from "vite";
 
 export default defineConfig({
     build: {
         lib: {
-            entry: "src/dayOfTheWeek.ts", // your web component source file
+            entry: "/src/dayOfTheWeek.ts", // your web component source file
             formats: ["es"],
         },
         outDir: "dist", // all compiled files will be placed here
