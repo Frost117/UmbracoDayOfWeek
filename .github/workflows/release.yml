@@ -19,16 +19,16 @@ jobs:
             dotnet-version: [ '9.0.x']  
     
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
             9.0.x
-
-      - name: Install Dependencies
-        run: dotnet restore $PROJECT_FOLDER/$PROJECT
-
+      - name: Set VERSION variable from tag
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+        
       - name: Build Project
         run: dotnet build --configuration Release /p:Version=${VERSION}
       
