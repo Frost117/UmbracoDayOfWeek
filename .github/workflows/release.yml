@@ -30,10 +30,12 @@ jobs:
         run: dotnet restore $PROJECT_FOLDER/$PROJECT
 
       - name: Build Project
-        run: dotnet build $PROJECT_FOLDER/$PROJECT
+        run: dotnet build --configuration Release /p:Version=${VERSION}
       
       - name: Create the package
-        run: dotnet pack --configuration Release $PROJECT_FOLDER/$PROJECT
+        run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
 
-      - name: Publish the package to Rository
-        run: dotnet nuget push $PROJECT_FOLDER/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s $NUGET_REPO_URL
+      - name: Publish the package to Repository
+        run: dotnet nuget push UmbracoDayOfWeek.${VERSION}.nupkg --api-key ${NUGET_API_KEY} --source https://api.nuget.org/v3/index.json
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
