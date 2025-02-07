@@ -5,11 +5,6 @@ name: Release to Nuget
 # Controls when the workflow will run
 on: [push]
 
-env:
-  PROJECT_FOLDER: UmbracoDayOfWeek
-  PROJECT: UmbracoDayOfWeek.csproj
-  NUGET_REPO_URL: https://nuget.pkg.github.com/Frost117/index.json
-
 jobs:
   build:
     runs-on: ubuntu-latest
