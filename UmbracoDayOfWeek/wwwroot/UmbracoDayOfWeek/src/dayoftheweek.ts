@@ -22,10 +22,10 @@ export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implement
   @property()
   public displayList: Array<any> = [];
   
-  @property({ type: Number })
+  @property()
   public defaultStartOfTheWeek: number = 1; // Monday by default
   
-  @property({ type: Number })
+  @property()
   public set value(value: number) {
     this.#selection = value;
   }
@@ -34,7 +34,7 @@ export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implement
   public myAuthToken: Promise<string> | undefined;
   
   @property({ attribute: false})
-  public set config(config: UmbPropertyEditorConfigCollection | undefined) {
+  public set config(config: UmbPropertyEditorConfigCollection) {
     let defaultStartDayOfWeekConfigValue = config.getValueByAlias("startOfWeek");
     this._startOfWeek = defaultStartDayOfWeekConfigValue ? defaultStartDayOfWeekConfigValue : this.defaultStartOfTheWeek;
   }
