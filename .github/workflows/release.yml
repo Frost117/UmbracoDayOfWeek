@@ -3,32 +3,37 @@
 name: Release to Nuget
 
 # Controls when the workflow will run
-on:
-  push:
-    tags:
-    - "v[0-9]+.[0-9]+.[0-9]+"
+on: [push]
+
+env:
+  PROJECT_FOLDER: src/UmbracoDayOfWeek
+  PROJECT: UmbracoDayOfWeek.csproj
+  NUGET_REPO_URL: https://nuget.pkg.github.com/Frost117/index.json
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy: 
+        matrix:
+            dotnet-version: [ '9.0.x']  
+    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Verify commit exists in origin/main
-      run: |
-        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        git branch --remote --contains | grep origin/main
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 9.0.102  
-    - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-    - name: Build
-      run: dotnet build --configuration Release /p:Version=${VERSION}
-    - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
-    - name: Push
-      run: dotnet nuget push UmbracoDayOfWeek.${VERSION}.nupkg --api-key ${NUGET_API_KEY} --source https://api.nuget.org/v3/index.json
-      env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      - uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            9.0.x
+
+      - name: Install Dependencies
+        run: dotnet restore $PROJECT_FOLDER/$PROJECT
+
+      - name: Build Project
+        run: dotnet build $PROJECT_FOLDER/$PROJECT
+      
+      - name: Create the package
+      - run: dotnet pack --configuration Release $PROJECT_FOLDER/$PROJECT
+
+      - name: Publish the package to Rository
+      - run: dotnet nuget push $PROJECT_FOLDER/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s $NUGET_REPO_URL
