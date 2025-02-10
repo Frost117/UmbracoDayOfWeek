@@ -35,8 +35,11 @@ export class MyDayOfTheWeekElement extends UmbElementMixin(LitElement) implement
   
   @property({ attribute: false})
   public set config(config: UmbPropertyEditorConfigCollection | undefined) {
-    let defaultStartDayOfWeekConfigValue = config.getValueByAlias("startOfWeek");
-    this._startOfWeek = defaultStartDayOfWeekConfigValue ? defaultStartDayOfWeekConfigValue : this.defaultStartOfTheWeek;
+      if (config) {
+          let defaultStartDayOfWeekConfigValue = config.getValueByAlias("startOfWeek") as number;
+          this._startOfWeek = defaultStartDayOfWeekConfigValue ? defaultStartDayOfWeekConfigValue : this.defaultStartOfTheWeek;
+      }
+    
   }
   // @ts-ignore  
   private _authorizationContext: UmbAuthContext;
