@@ -1,7 +1,7 @@
 {
     "$schema": "../../umbraco-package-schema.json",
     "name": "Day Of The Week",
-    "version": "15.0.0",
+    "version": "17.0.0-rc",
     "extensions": [
         {
             "type": "propertyEditorUi",
